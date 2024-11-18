@@ -21,21 +21,28 @@ typedef struct {
 typedef struct {
   int nPermutants;
   int nPermutantsCapacity;
+  Object **permutants;
+
   int size;
   int capacity;
-  bool queryAdded;
-  int candidatesSize;
-
-
-  Object *query;
-  Object **permutants;
   Object **objects;
+
+  int candidatesSize;
   Object **candidates;
+
+  int nFicticious;
+  int nFicticiousCapacity;
+  float *ficticiousDistances;
+
+  bool queryAdded;
+  Object *query;
 } PBI;
 
 extern float percentage;
 
 extern PBI pbi;
+extern float *distances;
+extern float *sortedDistances;
 
 
 void InitPBI();

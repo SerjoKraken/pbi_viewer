@@ -61,7 +61,7 @@ void Init(){
   GuiSetStyle(DEFAULT, TEXT_SIZE, 20);
 
 }
-char *mode[] = {"CREATE_OBJECT", "CREATE_PERMUTANT", "CREATE_QUERY", "DRAGGING"};
+char *mode[] = {"CREATE OBJECT", "CREATE PERMUTANT", "CREATE QUERY", "DRAGGING"};
 char *objectType[] = {"OBJECT", "PERMUTANT", "QUERY"};
 
 void DrawPermutant(Object *object) {
@@ -295,10 +295,17 @@ int main(void) {
       }
 
 
-      for (int i = 0; i < pbi.candidatesSize; i++) {
-        Object *o = pbi.candidates[i];
-        DrawRectangleLines(o->position.x - 10, o->position.y - 10, 20, 20, BLACK);
-      }
+
+        for (int i = 0; i < pbi.candidatesSize; i++) {
+          if (pbi.candidates[i] != NULL) {
+            Object *o = pbi.candidates[i];
+            DrawRectangleLines(o->position.x - 10, o->position.y - 10, 20, 20, BLACK);
+          } else {
+            printf("Error: NULL candidates at index %d\n", i);
+          }
+        }
+
+
     }
 
     EndMode2D();
@@ -337,7 +344,7 @@ int main(void) {
       (Rectangle){80, 220, 120, 30}, 
       NULL,
       TextFormat("%.2f%%", percentage), 
-      &percentage, 0, 80);
+      &percentage, 0, 90);
 
 
     DrawText("(ELEMENT, SIMILARITY)", panelRec.x , panelRec.y - 20, 20, RED);
