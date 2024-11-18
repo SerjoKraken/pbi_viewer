@@ -344,7 +344,7 @@ int main(void) {
       (Rectangle){80, 220, 120, 30}, 
       NULL,
       TextFormat("%.2f%%", percentage), 
-      &percentage, 0, 90);
+      &percentage, 0, 100);
 
 
     DrawText("(ELEMENT, SIMILARITY)", panelRec.x , panelRec.y - 20, 20, RED);
